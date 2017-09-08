@@ -1,4 +1,5 @@
 $brand_blue: rgb(51, 89, 223);
+$brand_blue_light: rgba(51, 89, 223, 0.8);
 $brand_orange: rgb(255, 175, 48);
 
 #sign-in{
@@ -18,10 +19,26 @@ $brand_orange: rgb(255, 175, 48);
   }
 }
 
-.btn-outline-primary{
-  color: $brand_blue;
-  border-color: $brand_blue;
-  &:hover{
-    background-color: $brand_blue;
+// .btn-outline-primary{
+//   color: $brand_blue;
+//   border-color: $brand_blue;
+//   &:hover{
+//     background-color: $brand_blue;
+//   }
+// }
+
+.g-signin2{
+  .abcRioButton{
+    width: 200px !important;
+    margin: 0 auto;
+    .abcRioButtonLightBlue{
+      color: $brand_blue;
+    }
+    .abcRioButtonContentWrapper:hover{
+      background-color: $brand_blue_light;
+      .abcRioButtonLightBlue{
+        color: $brand_orange;
+      }
+    }
   }
 }
