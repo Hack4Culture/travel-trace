@@ -7,7 +7,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
 // import auth from './routes/auth';
 // import roles from './routes/roles';
-// import users from './routes/users';
+import auth from './routes/auth';
 // import search from './routes/search';
 // import documents from './routes/documents';
 
@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 
 // app.use('/auth/users', auth);
 // app.use('/api/roles', roles);
-// app.use('/api/users', users);
+app.use('/api/v1/auth', auth);
 // app.use('/api/documents', documents);
 // app.use('/api/search', search);
 
