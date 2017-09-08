@@ -1,0 +1,20 @@
+#sign-in {
+  width: 350px;
+  margin: 10em auto 1em auto;
+  text-align: center; }
+  #sign-in .logo-m {
+    height: 200px;
+    width: 200px;
+    margin: 0 auto; }
+  #sign-in .brand-name-m {
+    margin: 2em 0em 1.5em 0em;
+    font-family: 'Slabo 27px', serif;
+    color: #ffaf30; }
+
+.btn-outline-primary {
+  color: #3359df;
+  border-color: #3359df; }
+  .btn-outline-primary:hover {
+    background-color: #3359df; }
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jc3Mvc3R5bGUuY3NzIiwic291cmNlUm9vdCI6IiJ9*/
