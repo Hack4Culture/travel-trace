@@ -1,1 +1,4 @@
 node_modules
+client/assets/js
+!client/assets/js/bundle.js
+.DS_Store
