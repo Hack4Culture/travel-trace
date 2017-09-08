@@ -11,10 +11,14 @@
     font-family: 'Slabo 27px', serif;
     color: #ffaf30; }
 
-.btn-outline-primary {
-  color: #3359df;
-  border-color: #3359df; }
-  .btn-outline-primary:hover {
-    background-color: #3359df; }
+.g-signin2 .abcRioButton {
+  width: 200px !important;
+  margin: 0 auto; }
+  .g-signin2 .abcRioButton .abcRioButtonLightBlue {
+    color: #3359df; }
+  .g-signin2 .abcRioButton .abcRioButtonContentWrapper:hover {
+    background-color: rgba(51, 89, 223, 0.8); }
+    .g-signin2 .abcRioButton .abcRioButtonContentWrapper:hover .abcRioButtonLightBlue {
+      color: #ffaf30; }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jc3Mvc3R5bGUuY3NzIiwic291cmNlUm9vdCI6IiJ9*/
