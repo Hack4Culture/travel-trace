@@ -22,7 +22,14 @@ module.exports = {
         { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader' },
         { test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000' },
         { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
-        { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' }
+        { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' },
+        {
+          test: /\.(gif|png|jpe?g|svg)$/i,
+          loaders: [
+            'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+            'image-webpack-loader'
+          ]
+        }
     ]
   },
   devServer: {
