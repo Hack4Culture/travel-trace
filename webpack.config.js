@@ -8,7 +8,7 @@ module.exports = {
   entry: [
     'eventsource-polyfill',
     'webpack-hot-middleware/client',
-    path.join(__dirname, 'client/app.jsx')
+    path.join(__dirname, 'client/Index.jsx')
   ],
   target: 'web',
   output: {
