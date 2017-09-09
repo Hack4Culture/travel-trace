@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import firebase from 'firebase';
 import savePostAction from '../../actions/postActions.js';
+
+var config = {
+  apiKey: "AIzaSyAfT6WFFEQuMDMq2oZGVUeK5LUh_KFWoNA",
+  authDomain: "travelt-19b64.firebaseapp.com",
+  databaseURL: "https://travelt-19b64.firebaseio.com",
+  projectId: "travelt-19b64",
+  storageBucket: "travelt-19b64.appspot.com",
+  messagingSenderId: "84907762892"
+};
+firebase.initializeApp(config);
+
 
 /** 
  * @class NewPost
@@ -17,14 +29,29 @@ class NewPost extends Component{
     super();
     this.state = {
       newPost: {
-        title: "New Trace at SF",
-        location: "SF",
+        name: "",
+        location: "",
         content: "",
-        images: ""
+        imageUrl: "",
       }
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.postTrace = this.postTrace.bind(this);
+    this.fileUpload = this.fileUpload.bind(this);
+  }
+
+  fileUpload(event) {
+    const newPost = this.state.newPost;
+    const file = event.target.files[0];
+    const storageRef = firebase.storage().ref();
+    storageRef.child('new').put(file).then((snapshot) => {
+      this.setState({
+        newPost: {
+          ...newPost,
+          imageUrl: snapshot.metadata.downloadURLs[0]
+        }
+      });
+    });
   }
 
   /**
@@ -34,7 +61,6 @@ class NewPost extends Component{
    */
   onInputChange(event){
     const newPost = this.state.newPost;
-
     this.setState({
       newPost: {
         ...newPost,
@@ -42,7 +68,6 @@ class NewPost extends Component{
       }
     });
   }
-
 
   /**
    * @memberof NewPost
@@ -57,13 +82,6 @@ class NewPost extends Component{
    * @returns { object } react-component
    */
   render() {
-    const image = this.state.newPost.images === "" ? (
-      <div className="container">
-        <i className="fa fa-picture-o fa-5x" aria-hidden="true" />
-      </div>
-    ) : (
-      <img src={this.state.newPost.images} alt="" />
-    );
     return(
       <div>
         <div id="upload" className="container">
@@ -71,7 +89,9 @@ class NewPost extends Component{
             <div className="form-row">
               <div className="col-sm-6">
                 <div id="image-div">
-                  {image}
+                  <div className="container form-image">
+                    <img className="img-responsive" src={this.state.newPost.imageUrl} alt="uploaded" />
+                  </div>
                 </div>
                 <div>
                   <input
@@ -79,8 +99,8 @@ class NewPost extends Component{
                     className="file-upload"
                     id="images"
                     name="images"
-                    accept="image/*"
-                    onChange={this.onInputChange}
+                    accept=".jpg,.jpeg,.png,.bmp"
+                    onChange={this.fileUpload}
                   />
                 </div>
               </div>
@@ -90,7 +110,7 @@ class NewPost extends Component{
                     type="text"
                     className="form-control"
                     id="title"
-                    name="title"
+                    name="name"
                     placeholder="Name your trace"
                     onChange={this.onInputChange}
                   />
@@ -110,7 +130,7 @@ class NewPost extends Component{
                   <textarea
                     className="form-control"
                     id="content"
-                    name="content"
+                    name="description"
                     rows="7"
                     onChange={this.onInputChange}
                   />

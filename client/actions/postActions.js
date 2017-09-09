@@ -22,9 +22,9 @@ const postFailure= error => (
  */
 export default function savePostAction(newpost) {
   return dispatch => (
-    axios.post('/api/v1/posts', newpost)
+    axios.post('/api/v1/trace', newpost)
   ).then((res) => {
-    dispatch(postSuccess(res.data.story))
+    dispatch(postSuccess(res.data.trace))
   }, ({ response }) => {
     console.log(response);
   });

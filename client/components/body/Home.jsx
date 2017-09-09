@@ -30,7 +30,6 @@ class Home extends Component {
   }
 
   componentWillMount() {
-    console.log('I mounted');
     const { isAuthenticated, user } = this.props.auth;
     this.setState({
       isAuthenticated,
@@ -44,15 +43,9 @@ class Home extends Component {
    * @returns { void }
    */
   componentDidMount() {
-    // gapi.signin2.render('my-signin2', {
-    //   'scope': 'profile email',
-    //   'width': 240,
-    //   'height': 50,
-    //   'longtitle': true,
-    //   'theme': 'dark',
-    //   'onsuccess': this.onSignIn,
-    //   'onfailure': this.onFailure
-    // });
+    if (this.state.isAuthenticated) {
+      this.props.history.push('/landing');
+    }
   }
 
   componentWillReceiveProps(nextProps) {

@@ -10,10 +10,10 @@ const Header = ({ username }) => {
   return(
     <div id="header">
       <nav className="navbar navbar-light bg-white">
-        <a className="navbar-brand brand-name" href="#">
+        <Link to="/" className="navbar-brand brand-name">
           <img src="/images/logo.png" width="30" height="30" className="d-inline-block align-top" alt="" />
           Travel Trace
-        </a>
+        </Link>
 
         <button className="navbar-toggler d-md-none" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
@@ -27,8 +27,9 @@ const Header = ({ username }) => {
               <Link to="/stories" className="nav-link">Stories</Link>
             </li>
             <li className="nav-item">
-              <button type="button" className="btn btn-primary btn-sm">Trace <i className="fa fa-camera" aria-hidden="true" />
-              </button>
+              <Link to="/upload" className="btn btn-primary btn-sm snapIt">
+                Trace <i className="fa fa-camera" aria-hidden="true" />
+              </Link>
             </li>
             
             <li className="nav-item dropdown">
@@ -41,8 +42,9 @@ const Header = ({ username }) => {
             </li>
           </ul>
         </div>
-        <button type="button" className="hide-sm btn btn-primary btn-lg">Trace <i className="fa fa-camera" aria-hidden="true" />
-        </button>
+        <Link to="/upload" className="btn btn-primary btn-sm snapIt">
+          Trace <i className="fa fa-camera" aria-hidden="true" />
+        </Link>
         <ul className="hide-sm nav">
           <li className="nav-item active">
             <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
