@@ -1,13 +1,13 @@
 {
   "development": {
-    "username": "andeladeveloper",
+    "username": "estherfalayi",
     "password": null,
     "database": "travelt",
     "host": "localhost",
     "dialect": "postgres"
   },
   "localTest": {
-    "username": "andeladeveloper",
+    "username": "estherfalayi",
     "password": null,
     "database": "test",
     "host": "localhost",

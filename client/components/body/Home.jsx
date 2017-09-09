@@ -2,7 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signinAction } from '../../actions/userActions';
 
+
+/**
+ * @class Home
+ * @extends {Component}
+ */
 class Home extends Component {
+
+  /**
+   * Creates an instance of Home.
+   * @memberof Home
+   */
   constructor() {
     super();
     this.state = {
@@ -15,6 +25,11 @@ class Home extends Component {
     this.onFailure = this.onFailure.bind(this);
   }
 
+
+  /**
+   * @memberof Home
+   * @returns { void }
+   */
   componentDidMount() {
     gapi.signin2.render('my-signin2', {
       'scope': 'profile email',
@@ -27,10 +42,12 @@ class Home extends Component {
     });
   }
 
-  // onClick() {
 
-  // }
-
+  /**
+   * @memberof Home
+   * @param {any} googleUser
+   * @returns { void }
+   */
   onSignIn(googleUser) {
     const profile = googleUser.getBasicProfile();
     this.state.fullname = profile.getName();
@@ -39,7 +56,7 @@ class Home extends Component {
     if (/@andela.com\s*$/.test(this.state.email)) {
       this.props.signinAction(this.state).then((res) => {
         if (res) {
-          localStorage.setItem('userToken', googleUser.getAuthResponse().id_token)
+          localStorage.setItem('userToken', googleUser.getAuthResponse().id_token);
         }
       });
     } else {
@@ -52,6 +69,22 @@ class Home extends Component {
     // // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
   }
 
+
+  /**
+   * @memberof Home
+   * @param {any} error
+   * @returns {void}
+   * 
+   */
+  onFailure(error) {
+    console.log(error);
+  }
+
+  /**
+   * @memberof Home
+   * @param {any} googleUser
+   * @returns { void }
+   */
   signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
@@ -59,17 +92,17 @@ class Home extends Component {
     });
   }
 
-  onFailure(error) {
-    console.log(error);
-  }
 
-
+  /**
+   * @memberof Home
+   * @returns { object } react-component
+   */
   render() {
     return (
       <div id="sign-in" className="container">
         <img src="/images/logo.png" className="logo-m rounded" alt="Andela" />
         <h3 className="brand-name-m">Andela Travel Trace</h3>
-        <div id="my-signin2"></div>
+        <div id="my-signin2" />
       </div>
     );
   }

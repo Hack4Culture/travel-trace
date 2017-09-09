@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Header = () => {
+const Header = ({ username }) => {
   return(
     <div id="header">
       <nav className="navbar navbar-light bg-white">
@@ -15,7 +16,7 @@ const Header = () => {
         <div className="collapse navbar-collapse d-md-none" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+              <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">Blog</a>
@@ -26,7 +27,7 @@ const Header = () => {
             </li>
             
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">User</a>
+              <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{username}</a>
               <div className="dropdown-menu">
                 <a className="dropdown-item" href="#">View Profile</a>
                 <a className="dropdown-item" href="#">Signout</a>
@@ -45,7 +46,7 @@ const Header = () => {
             <a className="nav-link" href="#">Blog</a>
           </li>
           <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">User</a>
+            <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{username}</a>
             <div className="dropdown-menu">
               <a className="dropdown-item" href="#">View Profile</a>
               <a className="dropdown-item" href="#">Signout</a>
@@ -56,6 +57,14 @@ const Header = () => {
       </nav>
     </div>
   );
+}
+
+Header.propTypes = {
+  username: PropTypes.string
+}
+
+Header.defaultProps = {
+  username: "User"
 }
 
 export default Header;
