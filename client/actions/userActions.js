@@ -16,5 +16,18 @@ export function signinAction(user) {
     return true;
   }, ({ response }) => {
     console.log(response);
+    dispatch(signinActionCreator({}))
+    return false;
+  })
+}
+
+export function signinWithToken(dispatch, token) {
+  axios.post('/api/v1/auth/login', { token })
+  .then((res) => {
+    return dispatch(signinActionCreator(res.data.user))
+  }, ({ response }) => {
+    console.log(response);
+    dispatch(signinActionCreator({}))
+    return false
   })
 }

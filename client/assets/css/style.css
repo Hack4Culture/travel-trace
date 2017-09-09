@@ -72,6 +72,61 @@ body {
     #landing-page #intro .intro-text {
       color: #ffaf30; }
 
+.stories-cont {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  min-height: 92vh;
+  background-color: rgba(0, 0, 0, 0.6); }
+  .stories-cont .cont {
+    flex: 0 1 1220px;
+    padding: 10px;
+    background-color: #fff;
+    height: 85vh; }
+    .stories-cont .cont .content {
+      max-width: 960px;
+      margin: 0 auto; }
+
+#my-signin2 div {
+  margin: 0 auto; }
+
+#upload {
+  padding-top: 3em; }
+  #upload #image-div {
+    height: 300px;
+    border: 1px solid #E0E0E0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    text-align: center;
+    margin-bottom: 1.8em;
+    padding-top: 6em;
+    background-color: #E0E0E0;
+    color: rgba(51, 89, 223, 0.8); }
+  #upload .post-btn {
+    width: 350px;
+    margin: 2em auto; }
+  #upload .file-upload::-webkit-file-upload-button {
+    visibility: hidden; }
+  #upload .file-upload::before {
+    content: 'Select image';
+    display: inline-block;
+    background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 0.8em; }
+  #upload .file-upload:hover::before {
+    border-color: black; }
+  #upload .file-upload:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); }
+
 @media (max-width: 767px) {
   .hide-sm {
     display: none; }

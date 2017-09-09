@@ -8,6 +8,7 @@ import App from './components/App';
 import rootReducer from './reducers/rootReducer';
 import './assets/stylesheets/style.scss';
 import setAuthorizationToken from './utils/setAuthorization';
+import { signinWithToken } from './actions/userActions';
 
 const store = createStore(
   rootReducer,
@@ -19,9 +20,9 @@ const store = createStore(
 );
 
 if (localStorage.getItem('userToken')) {
-  // const dispatch = store.dispatch;
+  const dispatch = store.dispatch;
   const token = localStorage.getItem('userToken');
-  // setCurrentUser(dispatch, token);
+  signinWithToken(dispatch, token);
   setAuthorizationToken(token);
 }
 

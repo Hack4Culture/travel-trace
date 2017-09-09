@@ -2,7 +2,7 @@ import isEmpty from 'lodash/isEmpty';
 import { SIGN_IN, SIGN_IN_ERROR, SIGN_OUT } from '../constants/constants';
 
 const initialState = {
-  isAuthenticate: false,
+  isAuthenticated: false,
   user: {}
 };
 
