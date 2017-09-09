@@ -19,6 +19,10 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: 'userId',
       as: 'posts',
     });
+    User.hasMany(models.Trace, {
+      foreignKey: 'userId',
+      as: 'traces',
+    });
 
     // User.hasMany(models.comment, {
     //   foreignKey: 'userId',

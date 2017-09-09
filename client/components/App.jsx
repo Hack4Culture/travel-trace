@@ -7,6 +7,7 @@ import Stories from './body/Stories';
 import Landing from './Landing';
 import Header from './Header';
 import Upload from './body/Upload';
+import ReadStory from './body/ReadStory';
 
 const history = createBrowserHistory();
 
@@ -42,8 +43,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/landing" component={Landing} />
-            <Route path="/stories" component={Stories} />
+            <Route exact path="/stories" component={Stories} />
             <Route exact path="/upload" component={Upload} /> 
+            <Route exact path="/stories/read/:id" component={ReadStory} />
           </Switch>
         </div>
       </Router>
