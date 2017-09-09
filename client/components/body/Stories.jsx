@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
 
+
+/**
+ * @class Stories
+ * @extends {Component}
+ */
 class Stories extends Component {
+
+
+  /**
+   * @memberof Stories
+   * @returns { object } react-component
+   */
   render() {
     return (
       <div className="stories-cont">

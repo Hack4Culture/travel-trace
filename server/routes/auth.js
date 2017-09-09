@@ -6,6 +6,9 @@ const User = require('../models').User;
 
 const router = express.Router();
 
+/* 
+  Controller Definition for Auth Route
+*/
 router.post('/', (req, res) => {
   const fullname = req.body.fullname;
   const email = req.body.email;

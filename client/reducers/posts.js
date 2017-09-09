@@ -6,6 +6,9 @@ const initialState = {
   user: {}
 };
 
+/* 
+  Post Reducer
+*/
 export default (state = initialState, action = {}) => {
   switch(action.type) {
     case POST_SUCCESS:

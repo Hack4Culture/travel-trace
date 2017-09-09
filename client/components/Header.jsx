@@ -2,6 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+/* 
+  Header Component
+  This component returns  an header with navigation links 
+*/
 const Header = ({ username }) => {
   return(
     <div id="header">

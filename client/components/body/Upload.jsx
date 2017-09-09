@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import savePostAction from '../../actions/postActions.js';
 
-
-import Header from '../Header';
-
 /** 
  * @class NewPost
  * @extends {Component}
@@ -60,17 +57,21 @@ class NewPost extends Component{
    * @returns { object } react-component
    */
   render() {
+    const image = this.state.newPost.images === "" ? (
+      <div className="container">
+        <i className="fa fa-picture-o fa-5x" aria-hidden="true" />
+      </div>
+    ) : (
+      <img src={this.state.newPost.images} alt="" />
+    );
     return(
       <div>
-        <Header />
         <div id="upload" className="container">
           <form className="container">
             <div className="form-row">
               <div className="col-sm-6">
                 <div id="image-div">
-                  <div className="container">
-                    <i className="fa fa-picture-o fa-5x" aria-hidden="true" />
-                  </div>
+                  {image}
                 </div>
                 <div>
                   <input
@@ -78,7 +79,7 @@ class NewPost extends Component{
                     className="file-upload"
                     id="images"
                     name="images"
-                    accept=".jpg,.jpeg,.png,.bmp"
+                    accept="image/*"
                     onChange={this.onInputChange}
                   />
                 </div>
