@@ -18,6 +18,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     content: {
       type: DataTypes.TEXT
+    },
+    images: {
+      type: DataTypes.TEXT
     }
   });
 
