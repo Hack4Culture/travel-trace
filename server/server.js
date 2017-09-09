@@ -5,7 +5,7 @@ import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
-// import auth from './routes/auth';
+import trace from './routes/trace';
 import posts from './routes/posts';
 import auth from './routes/auth';
 import tags from './routes/tags';
@@ -19,7 +19,7 @@ app.use('/', publicPath);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// app.use('/auth/users', auth);
+app.use('/api/v1/trace', trace);
 app.use('/api/v1/posts', posts);
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/tags', tags);
