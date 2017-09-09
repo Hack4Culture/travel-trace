@@ -1,7 +1,11 @@
 $brand_blue: rgb(51, 89, 223);
 $brand_blue_light: rgba(51, 89, 223, 0.8);
 $brand_orange: rgb(255, 175, 48);
+$brand_white: #ffffff;
 
+body{
+  font-family: 'Roboto', sans-serif;  
+}
 #sign-in{
   width: 350px;
   margin: 10em auto 1em auto;
@@ -19,14 +23,40 @@ $brand_orange: rgb(255, 175, 48);
   }
 }
 
-// .btn-outline-primary{
-//   color: $brand_blue;
-//   border-color: $brand_blue;
-//   &:hover{
-//     background-color: $brand_blue;
-//   }
-// }
-
+#header{
+  .dropdown-menu{
+    left: -5em;
+  }
+  .bg-white{
+    background-color: $brand_white;
+  }
+}
+.btn-primary{
+  color: $brand_white;
+  background-color: $brand_blue_light;
+  i{
+    margin-left: 0.8em;
+  }
+  &:hover{
+    background-color: $brand_blue;
+  }
+}
+.brand-name{
+  font-family: 'Slabo 27px', serif;
+  color: $brand_orange !important;
+  font-weight: 600;
+}
+.nav-link, .dropdown-item{
+  color: $brand_blue;
+}
+.dropdown-item:hover{
+  color: $brand_orange;
+}
+.navbar-brand{
+  img{
+    margin-right: 0.8em;
+  }
+}
 .g-signin2{
   .abcRioButton{
     width: 200px !important;
@@ -39,6 +69,55 @@ $brand_orange: rgb(255, 175, 48);
       .abcRioButtonLightBlue{
         color: $brand_orange;
       }
+    }
+  }
+}
+
+#landing-page {
+  position: relative;
+  background-image:url('/images/landing-bg.jpg');
+  background-repeat:no-repeat;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover;
+  background-position:center;
+  height: 100vh;
+  &:after {
+    background: linear-gradient(
+      rgba(51, 89, 223, .5),
+      rgba(51, 89, 223, .5));
+    content: '';
+    height: 100%;
+  }
+  #intro{
+    text-align: center;
+    margin-top: 22%;
+    .intro-text{
+      color: $brand_orange;
+    }
+  }
+}
+
+
+@media (max-width: 767px) {
+  .hide-sm{
+    display: none;
+  }
+  #header{
+    .dropdown-menu{
+      width: 5rem;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  #header{
+    .hide-sm{
+      display: flex;
+    }
+    button.hide-sm{
+      display: block !important;
     }
   }
 }
