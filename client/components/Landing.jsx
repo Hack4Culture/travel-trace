@@ -28,8 +28,7 @@ class Landing extends Component{
    */
   render() {
     return(
-      <div id="landing-page">
-        <Header username={this.state.user.name} />
+      <div>
         <div id="intro">
           <h2 className="intro-text">Share Your Travel Experience.</h2>
           <h4 className="intro-text">Create. Trace. Memories.</h4>

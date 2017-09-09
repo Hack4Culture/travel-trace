@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter, Redirect } from 'react-router-dom';
 import { signinAction } from '../../actions/userActions';
 
 
@@ -13,16 +14,28 @@ class Home extends Component {
    * Creates an instance of Home.
    * @memberof Home
    */
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: '',
       fullname: '',
-      avatar: ''
+      avatar: '',
+      isAuthenticated: false,
+      user: {},
+      loading: true
     };
     // this.onClick = this.onClick.bind(this);
     this.onSignIn = this.onSignIn.bind(this);
     this.onFailure = this.onFailure.bind(this);
+  }
+
+  componentWillMount() {
+    console.log('I mounted');
+    const { isAuthenticated, user } = this.props.auth;
+    this.setState({
+      isAuthenticated,
+      user
+    });
   }
 
 
@@ -31,14 +44,23 @@ class Home extends Component {
    * @returns { void }
    */
   componentDidMount() {
-    gapi.signin2.render('my-signin2', {
-      'scope': 'profile email',
-      'width': 240,
-      'height': 50,
-      'longtitle': true,
-      'theme': 'dark',
-      'onsuccess': this.onSignIn,
-      'onfailure': this.onFailure
+    // gapi.signin2.render('my-signin2', {
+    //   'scope': 'profile email',
+    //   'width': 240,
+    //   'height': 50,
+    //   'longtitle': true,
+    //   'theme': 'dark',
+    //   'onsuccess': this.onSignIn,
+    //   'onfailure': this.onFailure
+    // });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+    this.setState({
+      isAuthenticated: nextProps.auth.isAuthenticated,
+      user: nextProps.auth.user,
+      loading: false
     });
   }
 
@@ -58,6 +80,7 @@ class Home extends Component {
         if (res) {
           localStorage.setItem('userToken', googleUser.getAuthResponse().id_token);
         }
+        console.log('Sorry');
       });
     } else {
       console.log('Sorry');
@@ -92,20 +115,52 @@ class Home extends Component {
     });
   }
 
+  onFailure(error) {
+    console.log('error buddy', error);
+  }
+
 
   /**
    * @memberof Home
    * @returns { object } react-component
    */
   render() {
+    $(() => {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': this.onSignIn,
+        'onfailure': this.onFailure
+      });
+    });
+    const { loading, isAuthenticated } = this.state;
     return (
-      <div id="sign-in" className="container">
-        <img src="/images/logo.png" className="logo-m rounded" alt="Andela" />
-        <h3 className="brand-name-m">Andela Travel Trace</h3>
-        <div id="my-signin2" />
+      <div>
+        {
+          loading ? (<p>loading</p>) : (
+            <div>
+              {
+                isAuthenticated ? <Redirect to="/landing" /> : (
+                  <div id="sign-in" className="container">
+                    <img src="/images/logo.png" className="logo-m rounded" alt="Andela" />
+                    <h3 className="brand-name-m">Andela Travel Trace</h3>
+                    <div id="my-signin2"></div>
+                  </div>
+                )
+              }
+            </div>
+          )
+        }
       </div>
     );
   }
 }
 
-export default connect(null, { signinAction })(Home);
+const mapStateToProps = state => ({
+  auth: state.users
+})
+
+export default connect(mapStateToProps, { signinAction })(withRouter(Home));

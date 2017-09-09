@@ -1,5 +1,5 @@
 import express from 'express';
-import GoogleAuth from 'google-auth-library';
+import axios from 'axios';
 // import bcrypt from 'bcrypt-nodejs';
 
 const User = require('../models').User;
@@ -47,6 +47,41 @@ router.post('/', (req, res) => {
   })
   .catch(e => res.status(500).send({ message: 'Internal Server error', e }))
 });
+
+router.post('/login', (req, res) => {
+  const token = req.body.token;
+  if (token) {
+    axios.post(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${token}`)
+    .then((result) => {
+      User.findOne({
+        where: {
+          email: result.data.email
+        }
+      }).then((user) => {
+        if (user) {
+          return res.status(200).send({
+            user: user.dataValues
+          });
+        }
+        if (/@andela.com\s*$/.test(res.data.email)) {
+          User.create({
+            fullname: res.data.name,
+            avatar: res.data.picture,
+            email: res.data.email
+          }).then((newUser) => {
+            return res.status(200).send({
+              user: newUser
+            });
+          })
+        }
+      })
+    }, () => {
+      return res.status(400).send({
+        message: 'Authentication failed!',
+      })
+    })
+  }
+})
 
 export default router;
 

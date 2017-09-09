@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const Header = ({ username }) => {
@@ -19,7 +20,7 @@ const Header = ({ username }) => {
               <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Blog</a>
+              <Link to="/stories" className="nav-link">Stories</Link>
             </li>
             <li className="nav-item">
               <button type="button" className="btn btn-primary btn-sm">Trace <i className="fa fa-camera" aria-hidden="true" />
@@ -43,7 +44,7 @@ const Header = ({ username }) => {
             <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Blog</a>
+            <Link to="/stories" className="nav-link">Stories</Link>
           </li>
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{username}</a>
