@@ -5,6 +5,9 @@ const Post = require('../models').Post;
 
 const router = express.Router();
 
+/* 
+  Controller Definition for Post Route
+*/
 router.post('/', authWare, (req, res) => {
   const userdata = req.userdata;
   const userId = userdata.id;

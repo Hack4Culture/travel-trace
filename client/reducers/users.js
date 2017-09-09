@@ -6,6 +6,9 @@ const initialState = {
   user: {}
 };
 
+/* 
+    User Reducer
+*/
 export default (state = initialState, action = {}) => {
   switch(action.type) {
     case SIGN_IN:

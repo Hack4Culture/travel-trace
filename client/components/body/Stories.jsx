@@ -3,7 +3,18 @@ import { Link } from 'react-router-dom';
 import Doubles from './Doubles';
 import Singles from './Singles';
 
+
+/**
+ * @class Stories
+ * @extends {Component}
+ */
 class Stories extends Component {
+
+
+  /**
+   * @memberof Stories
+   * @returns { object } react-component
+   */
   render() {
     return (
       <div className="stories-cont">

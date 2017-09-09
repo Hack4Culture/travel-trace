@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Dropzone from 'react-dropzone';
-import request from 'superagent';
 import firebase from 'firebase';
 import savePostAction from '../../actions/postActions.js';
-
-const CLOUDINARY_UPLOAD_PRESET = 'viytx31e';
-const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/react-cloudinary/upload';
 
 var config = {
   apiKey: "AIzaSyAfT6WFFEQuMDMq2oZGVUeK5LUh_KFWoNA",
