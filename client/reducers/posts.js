@@ -5,6 +5,9 @@ const initialState = {
   trace: []
 };
 
+/* 
+  Post Reducer
+*/
 export default (state = initialState, action = {}) => {
   switch(action.type) {
     case POST_SUCCESS:

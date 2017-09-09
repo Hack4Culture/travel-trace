@@ -1,8 +1,13 @@
-import GoogleAuth from 'google-auth-library';
 import axios from 'axios';
 
 const User = require('../../models').User;
 
+/**
+ * @param {any} req 
+ * @param {any} res 
+ * @param {any} next 
+ * @returns { object } res
+ */
 export default function(req, res, next) {
   const authToken = req.headers.authorization;
   let token;

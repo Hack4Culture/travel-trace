@@ -5,6 +5,9 @@ const Tag = require('../models').Tag;
 
 const router = express.Router();
 
+/* 
+  Controller Definition for Tags Route
+*/
 router.post('/', authWare, (req, res) => {
   const title = req.body.title;
 
