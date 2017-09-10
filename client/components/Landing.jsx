@@ -26,7 +26,7 @@ class Landing extends Component{
    */
   render() {
     return(
-      <div id="intro">
+      <div id="intro" className="fade-in">
         <div className="intro-section">
           <h2 className="intro-text">Share Your Travel Experience.</h2>
           <h4 className="intro-text">Create. Trace. Memories.</h4>
@@ -65,7 +65,7 @@ class Landing extends Component{
               <div className="row">
                 <div className="col-md-8">
                   <div className="row">
-                    <div className="col-md-6 gallery-grid gallery-grid-lg">
+                    <div className="col-md-6 plr gallery-grid gallery-grid-lg">
                       <img className="img-responsive" src="/images/sf.jpg" alt="" />
                       <div className="lightbox" />
                       <div className="grid-description">
@@ -78,7 +78,7 @@ class Landing extends Component{
                     </div>
                     <div className="col-md-6">
                       <div className="row">
-                        <div className="col-md-12 gallery-grid gallery-grid-center">
+                        <div className="col-md-12 plr gallery-grid gallery-grid-center">
                           <img className="img-responsive" src="/images/img1.jpg" alt="" />
                           <div className="lightbox" />
                           <div className="grid-description">
@@ -89,7 +89,7 @@ class Landing extends Component{
                             <p>Some nice travel story</p>
                           </div>
                         </div>
-                        <div className="col-md-12 gallery-grid  gallery-grid-center">
+                        <div className="col-md-12 plr gallery-grid  gallery-grid-center">
                           <img className="img-responsive" src="/images/img4.jpg" alt="" />
                           <div className="lightbox" />
                           <div className="grid-description">

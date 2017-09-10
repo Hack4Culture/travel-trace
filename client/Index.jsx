@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import App from './components/App';
 import rootReducer from './reducers/rootReducer';
 import './assets/stylesheets/style.scss';
+import './assets/stylesheets/loading.scss';
 import setAuthorizationToken from './utils/setAuthorization';
 import { signinWithToken } from './actions/userActions';
 

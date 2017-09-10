@@ -77,6 +77,7 @@ class App extends Component {
   }
 }
 
+// Define PropTypes
 App.propsTypes = {
   auth: PropTypes.shape({
     isAuthenticated: PropTypes.bool.isRequired

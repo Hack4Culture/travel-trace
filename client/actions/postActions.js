@@ -25,7 +25,9 @@ export default function savePostAction(newpost) {
     axios.post('/api/v1/trace', newpost)
   ).then((res) => {
     dispatch(postSuccess(res.data.trace))
+    return true;
   }, ({ response }) => {
     console.log(response);
+    return false;
   });
 }
