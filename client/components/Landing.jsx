@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+
 import { getTracesAction } from '../actions/postActions';
 import Gallery from './body/Gallery';
 
@@ -94,6 +95,11 @@ class Landing extends Component{
           <hr />
           <div id="gallery">
             <Gallery traces={this.state.traces} />
+          </div>
+          <div className="text-center">
+            <Link to="/traces" className="btn btn-primary btn-lg active">
+              Other Traces
+           </Link>
           </div>
         </div>
       </div>

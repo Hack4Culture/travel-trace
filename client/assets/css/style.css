@@ -10,6 +10,10 @@
   background-color: #5C7AE5;
   color: #fff; }
 
+#all-traces {
+  padding-top: 2em;
+  color: #ffaf30; }
+
 body {
   font-family: 'Roboto', sans-serif; }
 
