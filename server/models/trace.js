@@ -1,5 +1,5 @@
-module.exports = function(sequelize, DataTypes) {
-  var Trace = sequelize.define('Trace', {
+module.exports = (sequelize, DataTypes) => {
+  const Trace = sequelize.define('Trace', {
     name: DataTypes.STRING,
     location: DataTypes.STRING,
     description: DataTypes.TEXT,
@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     Trace.belongsTo(models.User, {
       foreignKey: 'userId',
       onDelete: 'CASCADE'
-    })
-  }
+    });
+  };
   return Trace;
 };

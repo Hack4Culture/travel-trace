@@ -20,18 +20,19 @@ const store = createStore(
   )
 );
 
-if (localStorage.getItem('userToken')) {
-  const dispatch = store.dispatch;
-  const token = localStorage.getItem('userToken');
-  signinWithToken(dispatch, token);
+const token = localStorage.getItem('userToken');
+
+if (token) {
   setAuthorizationToken(token);
 }
-
-ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>,
-  document.getElementById('app')
-);
+const dispatch = store.dispatch;
+signinWithToken(dispatch, token).then(() => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>,
+    document.getElementById('app')
+  );
+});

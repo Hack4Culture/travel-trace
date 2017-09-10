@@ -1,33 +1,50 @@
 import axios from 'axios';
-import { POST_SUCCESS, POST_FAILURE } from '../constants/constants';
+import { ALL_TRACES, SAVE_TRACE } from '../constants/constants';
 
-const postSuccess = post => (
+const newTrace = post => (
   {
-    type: POST_SUCCESS,
+    type: SAVE_TRACE,
     post
   }
 );
 
-const postFailure= error => (
+const allTraces = traces => (
   {
-    type: POST_FAILURE,
-    error
+    type: ALL_TRACES,
+    traces
   }
 );
+
+// const postFailure= error => (
+//   {
+//     type: POST_FAILURE,
+//     error
+//   }
+// );
 
 
 /**
  * @param {any} newpost 
  * @returns {object} action
  */
-export default function savePostAction(newpost) {
+export function savePostAction(newpost) {
   return dispatch => (
     axios.post('/api/v1/trace', newpost)
   ).then((res) => {
-    dispatch(postSuccess(res.data.trace))
+    dispatch(newTrace(res.data.traces));
     return true;
   }, ({ response }) => {
     console.log(response);
     return false;
+  });
+}
+
+export function getTracesAction() {
+  return dispatch => (
+    axios.get('/api/v1/trace')
+  ).then((res) => {
+    dispatch(allTraces(res.data.traces))
+  }, ({ response }) => {
+
   });
 }
