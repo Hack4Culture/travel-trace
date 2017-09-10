@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { getTracesAction } from '../actions/postActions';
+import { getTracesAction } from '../actions/traceActions';
 import Gallery from './body/Gallery';
 
 /**
  * @class Landing
  * @extends {Component}
  */
-class Landing extends Component{
+class Landing extends Component {
 
   /**
    * Creates an instance of Landing.

@@ -10,6 +10,9 @@
   background-color: #5C7AE5;
   color: #fff; }
 
+.mce-content-body {
+  min-height: 400px !important; }
+
 body {
   font-family: 'Roboto', sans-serif; }
 
@@ -78,7 +81,8 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  height: 100vh; }
+  min-height: 100vh;
+  padding-bottom: 30px; }
   #landing-page::after {
     background: linear-gradient(rgba(51, 89, 223, 0.9), rgba(51, 89, 223, 0.9));
     content: '';
@@ -408,7 +412,7 @@ hr {
   #upload label {
     color: #ffffff; }
   #upload #image-div {
-    height: 300px;
+    min-height: 300px;
     width: 100%;
     border: 1px solid #E0E0E0;
     border-top-left-radius: 4px;
@@ -419,9 +423,19 @@ hr {
     color: rgba(51, 89, 223, 0.8); }
     #upload #image-div .img-responsive {
       width: 100%;
-      height: 100%; }
+      height: 100% !important; }
     #upload #image-div .no-preview {
       margin: 1.2em auto 0em auto; }
+    #upload #image-div input {
+      margin-bottom: 0px;
+      padding: 10px; }
+    #upload #image-div select {
+      margin-top: 20px; }
+    #upload #image-div #mceu_16-body span, #upload #image-div #mceu_16-body i, #upload #image-div #mceu_16-body button {
+      font-size: 11px;
+      max-width: 60px; }
+    #upload #image-div iframe {
+      min-height: 550px !important; }
   #upload .post-btn {
     width: 350px;
     margin: 2em auto; }

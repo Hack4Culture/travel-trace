@@ -8,3 +8,5 @@ export const POST_SUCCESS = 'POST_SUCCESS';
 export const POST_FAILURE = 'POST_FAILURE';
 export const ALL_TRACES = 'ALL_TRACES';
 export const SAVE_TRACE = 'SAVE_TRACE';
+export const SAVE_STORY = 'SAVE_STORY';
+export const ALL_STORIES = 'ALL_STORIES';

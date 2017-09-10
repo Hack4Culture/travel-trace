@@ -66,23 +66,23 @@ router.post('/login', (req, res) => {
             user: user.dataValues
           });
         }
-        if (/@andela.com\s*$/.test(res.data.email)) {
+        if (/@andela.com\s*$/.test(result.data.email)) {
           User.create({
-            fullname: res.data.name,
-            avatar: res.data.picture,
-            email: res.data.email
+            fullname: result.data.name,
+            avatar: result.data.picture,
+            email: result.data.email
           }).then((newUser) => {
             return res.status(200).send({
               user: newUser
             });
-          })
+          });
         }
-      })
-    }, () => {
-      return res.status(400).send({
+      });
+    }, () => (
+      res.status(400).send({
         message: 'Authentication failed!',
       })
-    })
+    ));
   }
 })
 

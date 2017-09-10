@@ -15,7 +15,7 @@ router.post('/', authWare, (req, res) => {
     return res.status(400).send({
       message: 'Registration failed!',
       errors
-    })
+    });
   }
   const userdata = req.userdata;
   const userId = userdata.id;
@@ -38,13 +38,13 @@ router.post('/', authWare, (req, res) => {
     res.status(200).send({
       message: 'Story added successfully',
       story
-    })
+    });
   }).catch((e) => {
     res.status(500).send({
       message: 'Internal server error',
       e
-    })
-  })
+    });
+  });
 });
 
 export default router;

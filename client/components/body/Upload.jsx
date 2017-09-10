@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import firebase from 'firebase';
-import { savePostAction } from '../../actions/postActions';
+import { saveTraceAction } from '../../actions/traceActions';
 import Alert from './Alert';
 
 const config = {
@@ -40,11 +41,37 @@ class NewPost extends Component {
       imageFile: "",
       messages: { open: false },
       saving: false,
-      completeFields: false
-    }
+      completeFields: false,
+      isAuthenticated: this.props.auth.isAuthenticated
+    };
     this.onInputChange = this.onInputChange.bind(this);
     this.postTrace = this.postTrace.bind(this);
     this.previewImage = this.previewImage.bind(this);
+  }
+
+  /**
+   * Runs when the component ii fully mounted
+   * @method componentDidMount
+   * @return {void}
+   * @memberOf Upload
+   */
+  componentDidMount() {
+    if (!this.state.isAuthenticated) {
+      this.props.history.push('/');
+    }
+  }
+
+  /**
+   * Set new props to state
+   * @method componentWillReceiveProps
+   * @param {object} nextProps 
+   * @return {void}
+   * @memberOf Upload
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      isAuthenticated: nextProps.auth.isAuthenticated,
+    });
   }
 
   /**
@@ -116,10 +143,10 @@ class NewPost extends Component {
         newPost: {
           ...newPost,
           imageUrl: snapshot.metadata.downloadURLs[0],
-          tempImg: ""
+          tempImg: ''
         }
       }, () => {
-        this.props.savePostAction(this.state.newPost).then((res)=> {
+        this.props.saveTraceAction(this.state.newPost).then((res)=> {
           if (res) {
             this.setState({
               ...this.state,
@@ -244,7 +271,7 @@ class NewPost extends Component {
 }
 
 NewPost.propTypes = {
-  savePostAction: PropTypes.func.isRequired
+  saveTraceAction: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => (
@@ -253,4 +280,4 @@ const mapStateToProps = state => (
   }
 );
 
-export default connect(mapStateToProps, { savePostAction })(NewPost);
+export default connect(mapStateToProps, { saveTraceAction })(withRouter(NewPost));
