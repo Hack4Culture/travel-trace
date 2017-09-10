@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
-
 import { getTracesAction } from '../actions/postActions';
 import Gallery from './body/Gallery';
 
@@ -10,7 +9,7 @@ import Gallery from './body/Gallery';
  * @class Landing
  * @extends {Component}
  */
-class Landing extends Component{
+class Landing extends Component {
 
   /**
    * Creates an instance of Landing.

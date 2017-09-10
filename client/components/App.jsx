@@ -10,6 +10,7 @@ import Landing from './Landing';
 import Header from './Header';
 import Upload from './body/Upload';
 import ReadStory from './body/ReadStory';
+import CreateStory from './body/CreateStory';
 import AllTraces from './body/AllTraces';
 
 const history = createBrowserHistory();
@@ -124,8 +125,8 @@ class App extends Component {
    * @returns { void }
    */
   signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
+    const auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(() => {
       console.log('User signed out.');
     });
   }
@@ -151,6 +152,7 @@ class App extends Component {
             <Route exact path="/upload" component={Upload} />
             <Route exact path="/traces" component={AllTraces} />
             <Route exact path="/stories/read/:id" component={ReadStory} />
+            <Route exact path="/stories/create" component={CreateStory} />
           </Switch>
         </div>
       </Router>

@@ -59,6 +59,10 @@ $grid_width: 500px;
   color: #fff;
 }
 
+.mce-content-body {
+  min-height: 400px !important;
+}
+
 #all-traces{
   padding-top: 2em;
   color: $brand_orange;
@@ -146,7 +150,8 @@ body{
   background-size:cover;
   background-position:center;
   background-attachment: fixed;
-  height: 100vh;
+  min-height: 100vh;
+  padding-bottom: 30px;
   &::after {
     background: linear-gradient(
       rgba(51, 89, 223, .9),
@@ -501,7 +506,7 @@ hr {
     color: $brand_white;
   }
   #image-div{
-    height: 300px;
+    min-height: 300px;
     width: 100%;
     border: 1px solid #E0E0E0;
     border-top-left-radius: 4px;
@@ -512,10 +517,29 @@ hr {
     color: $brand_blue_light;
     .img-responsive {
       width: 100%;
-      height: 100%;
+      height: 100% !important;
     }
     .no-preview{
       margin: 1.2em auto 0em auto;
+    }
+
+    input {
+      margin-bottom: 0px;
+      padding: 10px;
+    }
+
+    select {
+      margin-top: 20px;
+    }
+
+    #mceu_16-body {
+      span, i, button {
+        font-size: 11px;
+        max-width: 60px;
+      }
+    }
+    iframe {
+      min-height: 550px !important;
     }
   }
   .post-btn{
