@@ -32,8 +32,10 @@ export function savePostAction(newpost) {
     axios.post('/api/v1/trace', newpost)
   ).then((res) => {
     dispatch(newTrace(res.data.traces));
+    return true;
   }, ({ response }) => {
     console.log(response);
+    return false;
   });
 }
 

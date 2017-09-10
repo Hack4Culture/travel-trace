@@ -17,7 +17,7 @@ class Stories extends Component {
    */
   render() {
     return (
-      <div className="stories-cont">
+      <div className="stories-cont fade-in">
         <div className="cont">
           <div className="content">
             <div className="grid">

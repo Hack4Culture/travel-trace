@@ -59,7 +59,7 @@ class Landing extends Component{
    */
   render() {
     return(
-      <div id="intro">
+      <div id="intro" className="fade-in">
         <div className="intro-section">
           <h2 className="intro-text">Share Your Travel Experience.</h2>
           <h4 className="intro-text">Create. Trace. Memories.</h4>
@@ -101,19 +101,19 @@ class Landing extends Component{
   }
 }
 Landing.propTypes = {
-  auth: PropTypes.object
-}
+  auth: PropTypes.shape({})
+};
 
 Landing.defaultProps = {
   auth: {}
-}
+};
 
 // Map state to props
-const mapStateToProps = (state) => {
-  return {
+const mapStateToProps = (state) => (
+  {
     auth: state.users,
     traces: state.traces
   }
-}
+);
 
 export default connect(mapStateToProps, { getTracesAction })(withRouter(Landing));
