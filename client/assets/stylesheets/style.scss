@@ -1,6 +1,7 @@
 $brand_blue: rgb(51, 89, 223);
 $brand_blue_light: rgba(51, 89, 223, 0.8);
 $brand_orange: rgb(255, 175, 48);
+$brand_blue_transparent: rgba(51, 89, 223, 0.2);
 $brand_white: #ffffff;
 $grid_width: 500px;
 
@@ -58,12 +59,6 @@ $grid_width: 500px;
   color: #fff;
 }
 
-.form-image {
-  img {
-    width: 100%;
-    height: 100%;
-  }
-}
 
 body{
   font-family: 'Roboto', sans-serif;  
@@ -462,7 +457,13 @@ hr {
       -moz-transition: all 0.3s ease-in-out 0s;
       transition: all 0.3s ease-in-out 0s;
       h5{
-        color: $brand_blue_light;
+        color: $brand_blue;
+      }
+      span{
+        margin-right: 0.8em;
+      }
+      p{
+        color: $brand_orange;
       }
     }
     &:hover{
@@ -482,18 +483,37 @@ hr {
   margin: 0 auto;
 }
 
+.shadow {
+  -moz-box-shadow:    0 8px 6px -6px black;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  box-shadow:         0 8px 6px -6px black;
+}
+
 #upload{
   padding-top: 3em;
+  padding-bottom: 2em;
+  margin-top: 1.8em;
+  background-color: $brand_blue_transparent;
+  label{
+    color: $brand_white;
+  }
   #image-div{
     height: 300px;
+    width: 100%;
     border: 1px solid #E0E0E0;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     text-align: center;
     margin-bottom: 1.8em;
-    padding-top: 6em;
     background-color: #E0E0E0;
     color: $brand_blue_light;
+    .img-responsive {
+      width: 100%;
+      height: 100%;
+    }
+    .no-preview{
+      margin: 1.2em auto 0em auto;
+    }
   }
   .post-btn{
     width: 350px;
@@ -502,26 +522,27 @@ hr {
   .file-upload::-webkit-file-upload-button {
     visibility: hidden;
   }
+  
   .file-upload::before {
-    content: 'Select image';
+    content: 'Select Image';
     display: inline-block;
-    background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
-    border: 1px solid #999;
+    background: -webkit-linear-gradient(top, $brand_blue, $brand_blue_light);
     border-radius: 3px;
-    padding: 5px 8px;
+    padding: 8px 12px;
+    margin-right: 2em;
     outline: none;
     white-space: nowrap;
     -webkit-user-select: none;
     cursor: pointer;
-    text-shadow: 1px 1px #fff;
     font-weight: 700;
     font-size: 0.8em;
+    color: $brand_white;
   }
   .file-upload:hover::before {
     border-color: black;
   }
   .file-upload:active::before {
-    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+    background: -webkit-linear-gradient(top, $brand_blue, $brand_blue_light);
   }
 }
 
@@ -534,6 +555,12 @@ hr {
 }
 
 
+@media (max-width: 575px) {
+  .file-upload{
+    margin-bottom: 1em;
+  }
+    
+}
 
 @media (max-width: 767px) {
   .hide-sm{
