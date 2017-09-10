@@ -10,6 +10,7 @@ import Landing from './Landing';
 import Header from './Header';
 import Upload from './body/Upload';
 import ReadStory from './body/ReadStory';
+import AllTraces from './body/AllTraces';
 
 const history = createBrowserHistory();
 const API_KEY = '1046195674142-jlljcpbj568babnu48f6frhdgdl30hv4.apps.googleusercontent.com';
@@ -147,7 +148,8 @@ class App extends Component {
             <Route exact path="/" component={() => <Home onSignIn={this.onSignIn} />} />
             <Route path="/landing" component={Landing} />
             <Route exact path="/stories" component={Stories} />
-            <Route exact path="/upload" component={Upload} /> 
+            <Route exact path="/upload" component={Upload} />
+            <Route exact path="/traces" component={AllTraces} />
             <Route exact path="/stories/read/:id" component={ReadStory} />
           </Switch>
         </div>
@@ -162,11 +164,12 @@ App.propsTypes = {
     isAuthenticated: PropTypes.bool.isRequired
   }).isRequired,
   user: PropTypes.shape({})
-}
+};
+
 const mapStateToProps = state => (
   {
     auth: state.users
   }
-)
+);
 
 export default connect(mapStateToProps, { signinAction })(App);
