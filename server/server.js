@@ -5,10 +5,10 @@ import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
-// import auth from './routes/auth';
-// import roles from './routes/roles';
-// import users from './routes/users';
-// import search from './routes/search';
+import trace from './routes/trace';
+import posts from './routes/posts';
+import auth from './routes/auth';
+import tags from './routes/tags';
 // import documents from './routes/documents';
 
 const app = express();
@@ -19,10 +19,10 @@ app.use('/', publicPath);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// app.use('/auth/users', auth);
-// app.use('/api/roles', roles);
-// app.use('/api/users', users);
-// app.use('/api/documents', documents);
+app.use('/api/v1/trace', trace);
+app.use('/api/v1/posts', posts);
+app.use('/api/v1/auth', auth);
+app.use('/api/v1/tags', tags);
 // app.use('/api/search', search);
 
 const compiler = webpack(webpackConfig);

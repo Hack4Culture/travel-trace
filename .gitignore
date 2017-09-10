@@ -1,1 +1,5 @@
 node_modules
+client/assets/js
+.DS_Store
+.env
+server/config/
