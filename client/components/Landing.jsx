@@ -69,9 +69,12 @@ class Landing extends Component{
                       <img className="img-responsive" src="/images/sf.jpg" alt="" />
                       <div className="lightbox" />
                       <div className="grid-description">
-                        <h5>San Fransciso</h5>
-                      </div>
-                        
+                        <h5>
+                          <span><i className="fa fa-map-marker" aria-hidden="true" /></span>
+                          San Franciso 
+                        </h5>
+                        <p>Some nice travel story</p>
+                      </div>  
                     </div>
                     <div className="col-md-6">
                       <div className="row">
@@ -79,14 +82,22 @@ class Landing extends Component{
                           <img className="img-responsive" src="/images/img1.jpg" alt="" />
                           <div className="lightbox" />
                           <div className="grid-description">
-                            <h5>Kenya</h5>
+                            <h5>
+                              <span><i className="fa fa-map-marker" aria-hidden="true" /></span>
+                              Kenya
+                            </h5>
+                            <p>Some nice travel story</p>
                           </div>
                         </div>
                         <div className="col-md-12 gallery-grid  gallery-grid-center">
                           <img className="img-responsive" src="/images/img4.jpg" alt="" />
                           <div className="lightbox" />
                           <div className="grid-description">
-                            <h5>Uganda</h5>
+                            <h5>
+                              <span><i className="fa fa-map-marker" aria-hidden="true" /></span>
+                              Uganda
+                            </h5>
+                            <p>Some nice travel story</p>
                           </div>
                         </div>
                       </div>
@@ -98,7 +109,11 @@ class Landing extends Component{
                     <img className="img-responsive" src="/images/img3.jpg" alt="" />
                     <div className="lightbox" />
                     <div className="grid-description">
-                      <h5>Lagos</h5>
+                      <h5>
+                        <span><i className="fa fa-map-marker" aria-hidden="true" /></span>
+                        Lagos
+                      </h5>
+                      <p>Some nice travel story</p>
                     </div>
                   </div>
                 </div>

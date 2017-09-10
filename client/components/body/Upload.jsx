@@ -33,25 +33,13 @@ class NewPost extends Component{
         location: "",
         content: "",
         imageUrl: "",
-      }
-    };
+      },
+      previewUrl: "",
+      imageFile: ""
+    }
     this.onInputChange = this.onInputChange.bind(this);
     this.postTrace = this.postTrace.bind(this);
-    this.fileUpload = this.fileUpload.bind(this);
-  }
-
-  fileUpload(event) {
-    const newPost = this.state.newPost;
-    const file = event.target.files[0];
-    const storageRef = firebase.storage().ref();
-    storageRef.child('new').put(file).then((snapshot) => {
-      this.setState({
-        newPost: {
-          ...newPost,
-          imageUrl: snapshot.metadata.downloadURLs[0]
-        }
-      });
-    });
+    this.previewImage = this.previewImage.bind(this);
   }
 
   /**
@@ -70,10 +58,39 @@ class NewPost extends Component{
   }
 
   /**
+   * @param {any} event 
+   * @memberof NewPost
+   * @returns { void }
+   */
+  previewImage(event) {
+    const file = event.target.files[0];  
+    if(event.target.files && file) {
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        this.setState({
+          previewUrl: e.target.result,
+          imageFile: file
+        });
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
+  /**
    * @memberof NewPost
    * @returns { void }
    */
   postTrace() {
+    const newPost = this.state.newPost;
+    const storageRef = firebase.storage().ref();
+    storageRef.child('new').put(this.state.imageFile).then((snapshot) => {
+      this.setState({
+        newPost: {
+          ...newPost,
+          imageUrl: snapshot.metadata.downloadURLs[0]
+        }
+      });
+    });
     this.props.savePostAction(this.state.newPost);
   }
 
@@ -82,25 +99,28 @@ class NewPost extends Component{
    * @returns { object } react-component
    */
   render() {
+    const imgSrc = this.state.previewUrl === "" ? (
+      <i className="fa fa-picture-o fa-5x no-preview" aria-hidden="true" />
+    ) : (
+      <img className="img-responsive" src={this.state.previewUrl} alt="preview" />
+    )
     return(
       <div>
-        <div id="upload" className="container">
+        <div id="upload" className="container shadow">
           <form className="container">
             <div className="form-row">
               <div className="col-sm-6">
                 <div id="image-div">
-                  <div className="container form-image">
-                    <img className="img-responsive" src={this.state.newPost.imageUrl} alt="uploaded" />
-                  </div>
+                  { imgSrc }
                 </div>
                 <div>
                   <input
                     type="file"
                     className="file-upload"
-                    id="images"
-                    name="images"
+                    id="imageUrl"
+                    name="imageUrl"
                     accept=".jpg,.jpeg,.png,.bmp"
-                    onChange={this.fileUpload}
+                    onChange={this.previewImage}
                   />
                 </div>
               </div>
