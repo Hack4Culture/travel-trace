@@ -13,6 +13,10 @@
 .mce-content-body {
   min-height: 400px !important; }
 
+#all-traces {
+  padding-top: 2em;
+  color: #ffaf30; }
+
 body {
   font-family: 'Roboto', sans-serif; }
 

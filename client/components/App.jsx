@@ -11,6 +11,7 @@ import Header from './Header';
 import Upload from './body/Upload';
 import ReadStory from './body/ReadStory';
 import CreateStory from './body/CreateStory';
+import AllTraces from './body/AllTraces';
 
 const history = createBrowserHistory();
 const API_KEY = '1046195674142-jlljcpbj568babnu48f6frhdgdl30hv4.apps.googleusercontent.com';
@@ -149,6 +150,7 @@ class App extends Component {
             <Route path="/landing" component={Landing} />
             <Route exact path="/stories" component={Stories} />
             <Route exact path="/upload" component={Upload} />
+            <Route exact path="/traces" component={AllTraces} />
             <Route exact path="/stories/read/:id" component={ReadStory} />
             <Route exact path="/stories/create" component={CreateStory} />
           </Switch>
