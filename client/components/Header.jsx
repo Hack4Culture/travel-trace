@@ -42,7 +42,7 @@ const Header = ({ username }) => {
             </li>
           </ul>
         </div>
-        <Link to="/upload" className="btn btn-primary btn-sm snapIt">
+        <Link to="/upload" className="hide-sm btn btn-primary btn-sm snapIt">
           Trace <i className="fa fa-camera" aria-hidden="true" />
         </Link>
         <ul className="hide-sm nav">

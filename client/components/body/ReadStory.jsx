@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class ReadStory extends Component {
   render() {
     return (
-      <div className="stories-cont">
+      <div className="stories-cont slide-up">
         <div className="cont">
           <div className="single">
             <div className="row">

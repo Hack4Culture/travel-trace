@@ -7,7 +7,7 @@ const Alert = ({ message }) => {
       <button type="button" className="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
-      <strong>An error occured</strong>{ message }
+      <strong>{ message }</strong>
     </div>
   )
 };
