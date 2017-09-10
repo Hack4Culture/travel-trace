@@ -10,7 +10,16 @@ const router = express.Router();
 */
 router.post('/', authWare, (req, res) => {
   const title = req.body.title;
-
+  if (!req.body.title) {
+    return res.status(400).send({
+      message: 'Unable to create tag',
+      errors: {
+        param: {
+          title: 'Title is required'
+        }
+      }
+    });
+  }
   Tag.create({
     title
   }).then((tag) => {

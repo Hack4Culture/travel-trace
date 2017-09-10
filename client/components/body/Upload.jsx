@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import firebase from 'firebase';
-import savePostAction from '../../actions/postActions.js';
+import { savePostAction } from '../../actions/postActions';
 
-var config = {
-  apiKey: "AIzaSyAfT6WFFEQuMDMq2oZGVUeK5LUh_KFWoNA",
-  authDomain: "travelt-19b64.firebaseapp.com",
-  databaseURL: "https://travelt-19b64.firebaseio.com",
-  projectId: "travelt-19b64",
-  storageBucket: "travelt-19b64.appspot.com",
-  messagingSenderId: "84907762892"
+const config = {
+  apiKey: 'AIzaSyAfT6WFFEQuMDMq2oZGVUeK5LUh_KFWoNA',
+  authDomain: 'travelt-19b64.firebaseapp.com',
+  databaseURL: 'https://travelt-19b64.firebaseio.com',
+  projectId: 'travelt-19b64',
+  storageBucket: 'travelt-19b64.appspot.com',
+  messagingSenderId: '84907762892'
 };
 firebase.initializeApp(config);
 
@@ -19,25 +19,44 @@ firebase.initializeApp(config);
  * @class NewPost
  * @extends {Component}
  */
-class NewPost extends Component{
+class NewPost extends Component {
 
   /**
    * Creates an instance of NewPost.
    * @memberof NewPost
    */
-  constructor(){
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       newPost: {
-        name: "",
-        location: "",
-        content: "",
-        imageUrl: "",
-      }
+        name: '',
+        location: '',
+        content: '',
+        imageUrl: '',
+      },
+      isAuthenticated: this.props.auth.isAuthenticated
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.postTrace = this.postTrace.bind(this);
     this.fileUpload = this.fileUpload.bind(this);
+  }
+
+  /**
+   * Runw shen the component ii fully mounted
+   * @method componentDidMount
+   * @return {void}
+   * @memberOf Landing
+   */
+  componentDidMount() {
+    if (!this.state.isAuthenticated) {
+      this.props.history.push('/');
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      isAuthenticated: nextProps.auth.isAuthenticated
+    });
   }
 
   fileUpload(event) {
@@ -56,10 +75,10 @@ class NewPost extends Component{
 
   /**
    * @memberof NewPost
-   * @param {any} event 
+   * @param {any} event
    * @returns { void }
    */
-  onInputChange(event){
+  onInputChange(event) {
     const newPost = this.state.newPost;
     this.setState({
       newPost: {
@@ -82,7 +101,8 @@ class NewPost extends Component{
    * @returns { object } react-component
    */
   render() {
-    return(
+    const imageUrl = this.state.newPost.imageUrl || '/images/preview-icon.png';
+    return (
       <div>
         <div id="upload" className="container">
           <form className="container">
@@ -90,7 +110,7 @@ class NewPost extends Component{
               <div className="col-sm-6">
                 <div id="image-div">
                   <div className="container form-image">
-                    <img className="img-responsive" src={this.state.newPost.imageUrl} alt="uploaded" />
+                    <img src={imageUrl} alt="uploaded" />
                   </div>
                 </div>
                 <div>
@@ -149,6 +169,12 @@ class NewPost extends Component{
 
 NewPost.propTypes = {
   savePostAction: PropTypes.func.isRequired
-}
+};
 
-export default connect(null, { savePostAction })(NewPost);
+const mapStateToProps = state => (
+  {
+    auth: state.users
+  }
+);
+
+export default connect(mapStateToProps, { savePostAction })(NewPost);

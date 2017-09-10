@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { getTracesAction } from '../actions/postActions';
+import Gallery from './body/Gallery';
 
 /**
  * @class Landing
@@ -16,8 +19,38 @@ class Landing extends Component{
   constructor(props){
     super(props);
     this.state={
-      user: this.props.user
+      user: this.props.auth.user,
+      isAuthenticated: this.props.auth.isAuthenticated,
+      traces: []
     };
+  }
+
+  /**
+   * Runw shen the component ii fully mounted
+   * @method componentDidMount
+   * @return {void}
+   * @memberOf Landing
+   */
+  componentDidMount() {
+    if (!this.state.isAuthenticated) {
+      this.props.history.push('/');
+    }
+    this.props.getTracesAction();
+  }
+
+  /**
+   * Set new props to state
+   * @method componentWillReceiveProps
+   * @param {object} nextProps 
+   * @return {void}
+   * @memberOf Landing
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      user: nextProps.auth.user,
+      isAuthenticated: nextProps.auth.isAuthenticated,
+      traces: nextProps.traces
+    });
   }
   
   /**
@@ -60,50 +93,7 @@ class Landing extends Component{
           </div>
           <hr />
           <div id="gallery">
-            <div className="container">
-              <h3 className="gallery-title text-center">Gallery</h3>
-              <div className="row">
-                <div className="col-md-8">
-                  <div className="row">
-                    <div className="col-md-6 gallery-grid gallery-grid-lg">
-                      <img className="img-responsive" src="/images/sf.jpg" alt="" />
-                      <div className="lightbox" />
-                      <div className="grid-description">
-                        <h5>San Fransciso</h5>
-                      </div>
-                        
-                    </div>
-                    <div className="col-md-6">
-                      <div className="row">
-                        <div className="col-md-12 gallery-grid gallery-grid-center">
-                          <img className="img-responsive" src="/images/img1.jpg" alt="" />
-                          <div className="lightbox" />
-                          <div className="grid-description">
-                            <h5>Kenya</h5>
-                          </div>
-                        </div>
-                        <div className="col-md-12 gallery-grid  gallery-grid-center">
-                          <img className="img-responsive" src="/images/img4.jpg" alt="" />
-                          <div className="lightbox" />
-                          <div className="grid-description">
-                            <h5>Uganda</h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="gallery-grid gallery-grid-lg">
-                    <img className="img-responsive" src="/images/img3.jpg" alt="" />
-                    <div className="lightbox" />
-                    <div className="grid-description">
-                      <h5>Lagos</h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Gallery traces={this.state.traces} />
           </div>
         </div>
       </div>
@@ -111,18 +101,19 @@ class Landing extends Component{
   }
 }
 Landing.propTypes = {
-  user: PropTypes.object
+  auth: PropTypes.object
 }
 
 Landing.defaultProps = {
-  user: {}
+  auth: {}
 }
 
 // Map state to props
 const mapStateToProps = (state) => {
-  return{
-    user: state.users.user
+  return {
+    auth: state.users,
+    traces: state.traces
   }
 }
 
-export default connect(mapStateToProps, null)(Landing);
+export default connect(mapStateToProps, { getTracesAction })(withRouter(Landing));

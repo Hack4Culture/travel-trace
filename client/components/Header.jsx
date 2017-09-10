@@ -21,7 +21,7 @@ const Header = ({ username }) => {
         <div className="collapse navbar-collapse d-md-none" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
+              <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
             </li>
             <li className="nav-item">
               <Link to="/stories" className="nav-link">Stories</Link>
@@ -47,7 +47,7 @@ const Header = ({ username }) => {
         </Link>
         <ul className="hide-sm nav">
           <li className="nav-item active">
-            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+            <Link className="nav-link" to="/landing">Home <span className="sr-only">(current)</span></Link>
           </li>
           <li className="nav-item">
             <Link to="/stories" className="nav-link">Stories</Link>

@@ -1,6 +1,42 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class ReadStory extends Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      user: this.props.auth.user,
+      isAuthenticated: this.props.auth.isAuthenticated
+    };
+  }
+
+  /**
+   * Runw shen the component ii fully mounted
+   * @method componentDidMount
+   * @return {void}
+   * @memberOf ReadStory
+   */
+  componentDidMount() {
+    if (!this.state.isAuthenticated) {
+      this.props.history.push('/');
+    }
+  }
+
+  /**
+   * Set new props to state
+   * @method componentWillReceiveProps
+   * @param {object} nextProps 
+   * @return {void}
+   * @memberOf ReadStory
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      user: nextProps.auth.user,
+      isAuthenticated: nextProps.auth.isAuthenticated
+    });
+  }
+
   render() {
     return (
       <div className="stories-cont">
@@ -34,4 +70,11 @@ class ReadStory extends Component {
   }
 }
 
-export default ReadStory;
+// Map state to props
+const mapStateToProps = (state) => {
+  return {
+    auth: state.users
+  }
+}
+
+export default connect(mapStateToProps, null)(withRouter(ReadStory));

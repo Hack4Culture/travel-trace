@@ -1,5 +1,6 @@
 import express from 'express';
 import authWare from './middleware/authWare';
+import Validators from '../utils/validators';
 
 const Post = require('../models').Post;
 
@@ -9,6 +10,13 @@ const router = express.Router();
   Controller Definition for Post Route
 */
 router.post('/', authWare, (req, res) => {
+  const { isValid, errors } = Validators.newPost(req.body);
+  if (!isValid) {
+    return res.status(400).send({
+      message: 'Registration failed!',
+      errors
+    })
+  }
   const userdata = req.userdata;
   const userId = userdata.id;
   const title = req.body.title;
